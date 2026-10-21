@@ -117,6 +117,22 @@ body {
         flex-direction: column;
         gap: 0.5rem;
 
+        .error {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            color: var(--color-red);
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-bold);
+            line-height: 1.5;
+            letter-spacing: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+          }
+
+        }
+
         label {
           color: var(--color-blue-800);
           font-size: 0.75rem;
@@ -129,6 +145,13 @@ body {
           padding: 1rem;
           border-radius: 0.5rem;
           border: 1px solid var(--color-grey);
+          transition: all 0.2s ease-in-out;
+        }
+
+        input.error {
+          color: var(--color-red);
+          background-color: #FFE7E6;
+          border: 1px solid var(--color-red);
         }
       }
 
@@ -145,6 +168,8 @@ body {
         border-radius: 0.5rem;
         cursor: pointer;
       }
+
+
     }
 
   }
