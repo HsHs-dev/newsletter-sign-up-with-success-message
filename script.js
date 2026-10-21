@@ -2,6 +2,7 @@
 const form = document.querySelector("form")
 const input = form.querySelector("input")
 const errorMessage = form.querySelector("#email-error")
+const button = form.querySelector("button")
 
 // handlers
 function handleSubmit(e) {
@@ -22,6 +23,20 @@ function handleSubmit(e) {
 form.addEventListener("input", () => {
   errorMessage.style.opacity = "0"
   input.classList.remove("error")
+
+
 })
+
+form.addEventListener("focusin", () => {
+  button.classList.toggle("active")
+})
+
+form.addEventListener("focusout", () => {
+  button.classList.toggle("active")
+})
+
+if (input !== document.activeElement) {
+  button.classList.remove("active")
+}
 
 form.addEventListener("submit", handleSubmit)

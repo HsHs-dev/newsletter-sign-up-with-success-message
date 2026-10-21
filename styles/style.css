@@ -167,12 +167,62 @@ body {
         border: none;
         border-radius: 0.5rem;
         cursor: pointer;
+        position: relative;
+        isolation: isolate;
+        transition: background-size 0.2s ease-in-out;
       }
 
+      button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background-image: linear-gradient(90deg,
+            hsl(15deg 100% 61%) 0%,
+            hsl(12deg 100% 63%) 8%,
+            hsl(10deg 100% 64%) 17%,
+            hsl(7deg 100% 65%) 25%,
+            hsl(5deg 100% 66%) 33%,
+            hsl(2deg 100% 67%) 42%,
+            hsl(359deg 100% 68%) 50%,
+            hsl(357deg 100% 67%) 58%,
+            hsl(354deg 100% 67%) 67%,
+            hsl(352deg 100% 67%) 75%,
+            hsl(350deg 100% 66%) 83%,
+            hsl(348deg 100% 66%) 92%,
+            hsl(346deg 100% 66%) 100%);
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        z-index: -1;
+      }
+
+      button.active::before {
+        opacity: 1;
+      }
 
     }
-
   }
+}
 
+@media (min-width: 40rem) {
+  .sign-up {
+    border-radius: 2.25rem;
+    padding: 2.5rem;
+  }
+}
 
+@media (min-width: 60rem) {
+  .sign-up {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+
+    .image {
+      order: 1;
+    }
+
+    .content {
+      padding: 0;
+    }
+  }
 }
