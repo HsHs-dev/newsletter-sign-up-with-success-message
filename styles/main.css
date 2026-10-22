@@ -1,0 +1,383 @@
+:root {
+  --color-red: hsl(4, 100%, 67%);
+
+  --color-blue-800: hsl(234, 29%, 20%);
+  --color-blue-700: hsl(235, 18%, 26%);
+  --color-grey: hsl(0, 0%, 58%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --font-family: "Roboto", sans-serif;
+  --font-size-body: 1rem;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --gradient-button: linear-gradient(90deg,
+      hsl(15deg 100% 61%) 0%,
+      hsl(12deg 100% 63%) 8%,
+      hsl(10deg 100% 64%) 17%,
+      hsl(7deg 100% 65%) 25%,
+      hsl(5deg 100% 66%) 33%,
+      hsl(2deg 100% 67%) 42%,
+      hsl(359deg 100% 68%) 50%,
+      hsl(357deg 100% 67%) 58%,
+      hsl(354deg 100% 67%) 67%,
+      hsl(352deg 100% 67%) 75%,
+      hsl(350deg 100% 66%) 83%,
+      hsl(348deg 100% 66%) 92%,
+      hsl(346deg 100% 66%) 100%);
+
+  --shadow-button-hover: 0 1rem 2rem hsl(4 100% 67% / 35%);
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  background-color: var(--color-blue-700);
+}
+
+h1,
+p,
+ul {
+  margin: 0;
+}
+
+.sign-up {
+  width: 100%;
+  max-width: 56.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background-color: var(--color-white);
+  padding-bottom: 2.75rem;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
+}
+
+.sign-up .image img {
+  display: block;
+  width: 100%;
+}
+
+.sign-up .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+}
+
+.sign-up .text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sign-up .text-content h1 {
+  color: var(--color-blue-800);
+  font-size: 3.5rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.sign-up .text-content p {
+  color: var(--color-blue-800);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+.sign-up .text-content ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sign-up .text-content li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--color-blue-800);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+.sign-up .text-content li::before {
+  content: "";
+  flex: 0 0 1.3125rem;
+  width: 1.3125rem;
+  height: 1.3125rem;
+  background: url("../assets/images/icon-list.svg") no-repeat center / contain;
+}
+
+.sign-up form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field .error {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.form-field label,
+.form-field .error-message {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.5;
+}
+
+.form-field label {
+  color: var(--color-blue-800);
+}
+
+.form-field .error-message {
+  color: var(--color-red);
+}
+
+.form-field .error-message[hidden] {
+  display: none;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 0.5rem;
+  font: inherit;
+  color: var(--color-blue-800);
+  background-color: var(--color-white);
+  transition:
+    border-color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.form-field input:focus-visible {
+  outline: 2px solid var(--color-blue-700);
+  outline-offset: 2px;
+}
+
+.form-field input.invalid {
+  color: var(--color-red);
+  background-color: #ffe7e6;
+  border-color: var(--color-red);
+}
+
+.form-field input.invalid:focus-visible {
+  outline-color: var(--color-red);
+}
+
+/* Shared button styling and gradient for both buttons */
+
+.button {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-blue-800);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: var(--gradient-button);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  opacity: 1;
+}
+
+.button:hover,
+.button:focus-visible {
+  box-shadow: var(--shadow-button-hover);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+/* Remove the form from layout while preserving its fade-out */
+
+.sign-up.confirmed {
+  position: fixed;
+  inset: 0;
+  width: min(56.5rem, 100vw);
+  height: fit-content;
+  max-height: 100dvh;
+  margin: auto;
+  overflow-y: auto;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Success overlay */
+
+.success {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 9.375rem 1.5rem 2.5rem;
+  background-color: var(--color-white);
+  visibility: hidden;
+  opacity: 0;
+  overflow-y: auto;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
+}
+
+.success.confirmed {
+  visibility: visible;
+  opacity: 1;
+}
+
+.success .image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.success .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.success .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.success h1 {
+  color: var(--color-blue-800);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.success p {
+  color: var(--color-blue-800);
+  line-height: 1.5;
+}
+
+.success #submitted-email {
+  overflow-wrap: anywhere;
+}
+
+/* Tablet */
+
+@media (min-width: 40rem) {
+  .sign-up {
+    border-radius: 2.25rem;
+    padding: 2.5rem;
+  }
+
+  .success {
+    inset: 0;
+    width: min(31.5rem, calc(100vw - 2rem));
+    height: fit-content;
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 4rem;
+    border-radius: 2.25rem;
+    justify-content: flex-start;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 60rem) {
+  .sign-up {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .sign-up .image {
+    order: 1;
+    flex: 0 0 48%;
+  }
+
+  .sign-up .content {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+  }
+}
+
+/* Respect the user's motion preference */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
