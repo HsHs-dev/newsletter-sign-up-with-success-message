@@ -7,46 +7,51 @@ const submitButton = form.querySelector("button")
 
 const successCard = document.querySelector(".success")
 const successButton = document.querySelector(".success button")
+const successHeading = successCard.querySelector("h1")
+const submittedEmail = successCard.querySelector("#submitted-email")
 
 // handlers
 function handleSubmit(e) {
   e.preventDefault()
 
-  const email = input.value
-  const emailRegex = /^\S+@\S+\.\S+$/;
+  const email = input.value.trim()
+  const emailRegex = /^\S+@\S+\.\S+$/
 
   if (!emailRegex.test(email)) {
-    errorMessage.style.opacity = "1"
+    errorMessage.hidden = false
+    input.setAttribute("aria-invalid", "true")
+    input.setAttribute("aria-describedby", errorMessage.id)
     input.classList.add("error")
   } else {
-    signUpCard.classList.toggle("confirmed")
-    successCard.classList.toggle("confirmed")
+    errorMessage.hidden = true
+    input.setAttribute("aria-invalid", "false")
+    input.removeAttribute("aria-describedby")
+    input.classList.remove("error")
+
+    submittedEmail.textContent = email
+
+    signUpCard.classList.add("confirmed")
+    successCard.classList.add("confirmed")
+
+    successHeading.focus()
   }
 }
 
 // event listeners
 
-successCard.addEventListener("click", () => {
-  successCard.classList.toggle("confirmed")
-  signUpCard.classList.toggle("confirmed")
-})
-
-// clear error message when the user start typing
+// clear error message when the user starts typing
 form.addEventListener("input", () => {
-  errorMessage.style.opacity = "0"
+  errorMessage.hidden = true
+  input.setAttribute("aria-invalid", "false")
+  input.removeAttribute("aria-describedby")
   input.classList.remove("error")
 })
 
-form.addEventListener("focusin", () => {
-  submitButton.classList.toggle("active")
+// dismiss only when the dismiss button is clicked
+successButton.addEventListener("click", () => {
+  successCard.classList.remove("confirmed")
+  signUpCard.classList.remove("confirmed")
+  input.focus()
 })
-
-form.addEventListener("focusout", () => {
-  submitButton.classList.toggle("active")
-})
-
-if (input !== document.activeElement) {
-  submitButton.classList.remove("active")
-}
 
 form.addEventListener("submit", handleSubmit)

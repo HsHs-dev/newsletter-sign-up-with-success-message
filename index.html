@@ -7,8 +7,8 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
-  <link rel="stylesheet" href="./styles/chores.css">
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/main.css">
 
   <script defer src="./script.js"></script>
 
@@ -51,10 +51,10 @@
         <div class="form-field">
           <div class="error">
             <label for="email">Email address</label>
-            <p id="email-error" aria-live="polite">Valid email required</p>
+            <p id="email-error" aria-live="polite" hidden>Valid email required</p>
           </div>
           <input type="email" id="email" name="email" placeholder="email@company.com" autocomplete="email"
-            aria-describedby="email-error" required />
+            aria-invalid="false" required />
         </div>
         <button type="submit">Subscribe to monthly newsletter</button>
       </form>
@@ -63,16 +63,16 @@
 
   </article>
 
-  <article class="success">
+  <article class="success" role="status" aria-live="polite" aria-atomic="true">
     <div class="content">
       <div class="image">
         <img src="./assets/images/icon-list.svg" alt="">
       </div>
-      <h1>
+      <h1 tabindex="-1">
         Thanks for subscribing!
       </h1>
       <p>
-        A confirmation email has been sent to <strong>ash@loremcompany.com</strong>.
+        A confirmation email has been sent to <strong id="submitted-email"></strong>.
         Please open it and click the button inside to confirm your subscription.
       </p>
     </div>
