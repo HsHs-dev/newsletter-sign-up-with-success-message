@@ -171,7 +171,6 @@ body {
         cursor: pointer;
         position: relative;
         isolation: isolate;
-        transition: background-size 0.2s ease-in-out;
       }
 
       button::before {
@@ -207,6 +206,9 @@ body {
 }
 
 .success {
+  display: flex;
+  flex-direction: column;
+  gap: 16.4375rem;
   max-width: 31.5rem;
   background-color: var(--color-white);
   padding-inline: 1.5rem;
@@ -226,7 +228,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-bottom: 16.4375rem;
 
     h1 {
       color: var(--color-blue-800);
@@ -261,6 +262,12 @@ body {
     border-radius: 2.25rem;
     padding: 2.5rem;
   }
+
+  .success {
+    border-radius: 2.25rem;
+    padding: 4rem;
+    gap: 2rem;
+  }
 }
 
 @media (min-width: 60rem) {
@@ -275,6 +282,44 @@ body {
 
     .content {
       padding: 0;
+    }
+  }
+
+  .success {
+    button {
+      position: relative;
+      isolation: isolate;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-image: linear-gradient(90deg,
+          hsl(15deg 100% 61%) 0%,
+          hsl(12deg 100% 63%) 8%,
+          hsl(10deg 100% 64%) 17%,
+          hsl(7deg 100% 65%) 25%,
+          hsl(5deg 100% 66%) 33%,
+          hsl(2deg 100% 67%) 42%,
+          hsl(359deg 100% 68%) 50%,
+          hsl(357deg 100% 67%) 58%,
+          hsl(354deg 100% 67%) 67%,
+          hsl(352deg 100% 67%) 75%,
+          hsl(350deg 100% 66%) 83%,
+          hsl(348deg 100% 66%) 92%,
+          hsl(346deg 100% 66%) 100%);
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+      z-index: -1;
+    }
+  }
+
+  .success:hover {
+    button::before {
+      opacity: 1;
+      box-shadow: 0 1rem 2rem 0 var(--color-red);
     }
   }
 }
