@@ -49,8 +49,8 @@ body {
   gap: 2.5rem;
   background-color: var(--color-white);
   padding-bottom: 2.75rem;
-
-  display: none;
+  visibility: visible;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   .image img {
     width: 100%;
@@ -205,7 +205,14 @@ body {
   }
 }
 
+.sign-up.confirmed {
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}
+
 .success {
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 16.4375rem;
@@ -214,6 +221,9 @@ body {
   padding-inline: 1.5rem;
   padding-top: 9.375rem;
   padding-bottom: 4.375rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   .image {
     width: 4rem;
@@ -255,6 +265,11 @@ body {
     border-radius: 0.5rem;
     cursor: pointer;
   }
+}
+
+.success.confirmed {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (min-width: 40rem) {
